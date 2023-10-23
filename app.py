@@ -7,5 +7,6 @@ st.set_page_config('Lucas Rossi-Ecop06',
 
 st.title('Página demo ECOP06')
 
-esportes=pd.read_csv('https://github.com/MainakRepositor/Datasets/raw/master/GeneralEsportData.csv')
+esportes=pd.read_csv('https://github.com/MainakRepositor/Datasets/raw/master/GeneralEsportData.csv', 
+                     encoding='latin-1')
 st.dataframe(esportes)
