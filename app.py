@@ -1,12 +1,11 @@
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
+from flask import Flask, render_template, request
+app = Flask(__name__)
 
-st.set_page_config('Lucas Rossi-Ecop06',
-                   'https://unifei.edu.br/wp-content/themes/twentytwelve-child/img/cabecalho/logo-unifei-oficial.png')
+@app.route('/', methods=['GET', 'POST'])
+def index():
+  nome = None
+  if request.method == 'POST' and 'nome' in request.form:
+    nome = request.form['nome']
+  return render_template('index.html', nome=nome)
 
-st.title('Página demo ECOP06')
-
-esportes=pd.read_csv('https://github.com/MainakRepositor/Datasets/raw/master/GeneralEsportData.csv', 
-                     encoding='latin-1')
-st.dataframe(esportes)
+app.run(debug=True)
